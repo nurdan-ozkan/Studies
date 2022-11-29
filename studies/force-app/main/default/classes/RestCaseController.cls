@@ -1,4 +1,4 @@
-@RestResource(urlMapping='/FieldCase/*')
+@RestResource(urlMapping='/FieldAccount/*')
 global class RestCaseController {
     @HTTPGet
     global static List<Case> numberOfRelatedCases(){
@@ -12,5 +12,16 @@ global class RestCaseController {
         
        return relatedCases;
     }
+    
+    @HTTPPost
+    global static String createNewAccount(String AccountName, String Rating){
+        Account ac = new Account();
+        ac.Name = AccountName;
+        ac.Rating = Rating;
+        insert ac;
+        return 'New Account has been created.';
+        
+    }
+   
 
 }
