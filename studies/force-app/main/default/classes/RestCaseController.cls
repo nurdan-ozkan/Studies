@@ -30,6 +30,12 @@ global class RestCaseController {
         return 'An Account has beeen update';
         
     }
-   
+   @HTTPDelete
+    global static String deleteAccount(){
+        String acId = RestContext.request.params.get('AccountId');
+        Account ac = [SELECT Id From Account WHERE Id=:acId];
+        delete ac;
+        return 'An account has been deleted';
+    }
 
 }
