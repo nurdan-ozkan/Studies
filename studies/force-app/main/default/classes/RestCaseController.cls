@@ -22,6 +22,14 @@ global class RestCaseController {
         return 'New Account has been created.';
         
     }
+    @HTTPPatch
+    global static String updateanAccount(String acId, String acSite){
+        Account ac =[SELECT Id, Name, Site FROM Account WHERE Id=: acId];
+        ac.Site = acSite;
+        update ac;
+        return 'An Account has beeen update';
+        
+    }
    
 
 }
